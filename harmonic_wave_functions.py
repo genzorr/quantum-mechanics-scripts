@@ -1,4 +1,3 @@
-#!/usr/bin/python3
 import os
 import functools
 import numpy as np
@@ -47,7 +46,7 @@ if __name__ == '__main__':
     for n in np.arange(0, max_n+1, 1):
         wf_precise = wave_precise(n, x_normed)
         wf_int, err = quad(functools.partial(prob_wave_precise, n), -100, 100)
-        print(wf_int, err)
+        # print(wf_int, err)
         wf_precise /= np.sqrt(wf_int)
         fig.add_trace(go.Scatter(
             visible=False,
@@ -61,7 +60,7 @@ if __name__ == '__main__':
 
         wf_quasi = np.array(list(map(functools.partial(wave_quasi_classical, eps, a, b, n, 1, False), x_normed)))
         wf_int, err = quad(functools.partial(prob_wave_quasi_classical, eps*100, a, b, n, 1, True), -100, 100)
-        print(wf_int, err)
+        # print(wf_int, err)
         wf_quasi /= np.sqrt(wf_int)
 
         # Check norm
